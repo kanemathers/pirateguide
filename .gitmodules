@@ -1,0 +1,3 @@
+[submodule "pirateguide/static/libs/bootstrap"]
+	path = pirateguide/static/libs/bootstrap
+	url = git@github.com:twitter/bootstrap.git
