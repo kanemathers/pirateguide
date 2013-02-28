@@ -95,8 +95,7 @@ def add_movie_path(tmdb, path, movie_name):
     })
 
     try:
-        info    = resp['results'][0]
-        tmdb_id = info.pop('id')
+        tmdb_id = resp['results'][0]['id']
     except (KeyError, IndexError):
         log.info('unknown movie: {0}'.format(path))
 
@@ -104,8 +103,10 @@ def add_movie_path(tmdb, path, movie_name):
     else:
         log.info('adding movie: {0}'.format(path))
 
+        resp = tmdb.request('/movie/{0}'.format(tmdb_id))
+
         movie            = Movies(tmdb_id, path)
-        movie.tmdb_cache = info
+        movie.tmdb_cache = resp
 
         try:
             with transaction.manager:
