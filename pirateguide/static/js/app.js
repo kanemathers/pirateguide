@@ -1,6 +1,7 @@
 angular.module('pirateguide', [
     'pirateguide.controllers',
-    'pirateguide.services'
+    'pirateguide.services',
+    'pirateguide.directives'
 ])
 
 .config([
