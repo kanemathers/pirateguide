@@ -21,6 +21,12 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
 
+    <script>
+    angular.module('pirateguide.settings', [])
+
+    .value('api_key', '${api_key}');
+    </script>
+
     % for url in request.webassets_env['js'].urls():
     <script src="${url}"></script>
     % endfor
