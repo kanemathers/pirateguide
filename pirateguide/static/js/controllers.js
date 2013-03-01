@@ -7,26 +7,6 @@ angular.module('pirateguide.controllers', [])
 
     function($scope, Movies, TMDB)
     {
-        var screen      = angular.element(window);
-        var screenRatio = screen.width() / screen.height();
-
-        Movies.all().success(function(resp)
-        {
-            var movies  = [];
-            var unknown = [];
-
-            angular.forEach(resp, function(i)
-            {
-                if (i.tmdb_id)
-                    movies.push(i);
-                else
-                    unknown.push(i);
-            });
-
-            $scope.movies  = movies;
-            $scope.unknown = unknown;
-        });
-
         var findPoster = function(posters)
         {
             var closest = null;
@@ -54,5 +34,25 @@ angular.module('pirateguide.controllers', [])
                 $scope.$emit('bg:change', url);
             });
         };
+
+        var screen      = angular.element(window);
+        var screenRatio = screen.width() / screen.height();
+
+        Movies.all().success(function(resp)
+        {
+            var movies  = [];
+            var unknown = [];
+
+            angular.forEach(resp, function(i)
+            {
+                if (i.tmdb_id)
+                    movies.push(i);
+                else
+                    unknown.push(i);
+            });
+
+            $scope.movies  = movies;
+            $scope.unknown = unknown;
+        });
     }
 ]);
