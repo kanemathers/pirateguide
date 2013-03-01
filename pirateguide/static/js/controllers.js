@@ -6,9 +6,21 @@ angular.module('pirateguide.controllers', [])
 
     function($scope, Movies)
     {
-        Movies.all().success(function(movies)
+        Movies.all().success(function(resp)
         {
-            $scope.movies = movies;
+            var movies  = [];
+            var unknown = [];
+
+            angular.forEach(resp, function(i)
+            {
+                if (i.tmdb_id)
+                    movies.push(i);
+                else
+                    unknown.push(i);
+            });
+
+            $scope.movies  = movies;
+            $scope.unknown = unknown;
         });
 
         $scope.setMovie = function(movie)
