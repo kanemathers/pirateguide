@@ -20,20 +20,46 @@ angular.module('pirateguide.services', [])
 
     function($http, api_key)
     {
-        var api_base = 'http://api.themoviedb.org/3/';
+        var settings = {
+            api_base: 'http://api.themoviedb.org/3/',
+            img_base: null
+        };
 
-        return {
+        var stripSlash = function(path)
+        {
+            if (path.charAt(0) === '/')
+                path = path.slice(1);
+
+            return path;
+        };
+
+        var TMDB = {
             request: function(request, params)
             {
                 params          = params || {};
                 params.api_key  = api_key;
                 params.callback = 'JSON_CALLBACK';
 
-                if (request.charAt(0) === '/')
-                    request = request.slice(1)
+                return $http.jsonp(settings.api_base + stripSlash(request),
+                                   {params: params});
+            },
 
-                return $http.jsonp(api_base + request, {params: params});
+            imgUrl: function(path)
+            {
+                var query = '/original/' + stripSlash(path);
+
+                return settings.img_base + stripSlash(query);
             }
         };
+
+        // TODO: requests made beofre this completes will error due to the
+        // missing img_base. need to queue them up and retry them once this
+        // block completes
+        TMDB.request('/configuration').success(function(config)
+        {
+            settings.img_base = config.images.base_url;
+        });
+
+        return TMDB;
     }
 ]);
