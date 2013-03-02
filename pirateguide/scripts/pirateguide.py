@@ -132,6 +132,8 @@ class LibraryEventHandler(FileSystemEventHandler):
         filename   = os.path.basename(event.dest_path)
         movie_name = Movies.clean_filename(filename, blacklist)
 
+        log.info('updating movie: "{0}"'.format(event.dest_path))
+
         movie      = Movies.by_path(event.src_path)
         movie.path = event.dest_path
         movie.save()
@@ -149,6 +151,8 @@ class LibraryEventHandler(FileSystemEventHandler):
         filename   = os.path.basename(event.src_path)
         movie_name = Movies.clean_filename(filename, blacklist)
 
+        log.info('adding new movie: "{0}"'.format(event.src_path))
+
         add_movie_path(self.tmdb, event.src_path, movie_name)
 
     def on_deleted(self, event):
@@ -158,6 +162,8 @@ class LibraryEventHandler(FileSystemEventHandler):
             return
 
         movie = Movies.by_path(event.src_path)
+
+        log.info('deleting movie: "{0}"'.format(event.src_path))
 
         if movie:
             movie.delete()
