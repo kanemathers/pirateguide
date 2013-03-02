@@ -12,7 +12,7 @@ from .models import (
 @view_config(route_name='home', renderer='index.mako')
 def home(request):
     return {
-        'api_key': request.registry.settings['movie.api_key']
+        'api_key': request.registry.settings['movies.api_key']
     }
 
 @view_config(route_name='partials')

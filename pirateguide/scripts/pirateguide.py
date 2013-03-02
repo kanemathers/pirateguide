@@ -190,13 +190,13 @@ def main(argv=sys.argv):
 
     settings  = get_appsettings(args[0])
     libraries = settings['movies.directories'].split('\n')
-    api_key   = settings['movie.api_key']
+    api_key   = settings['movies.api_key']
 
     if options.init_db:
         initialize_db(settings)
 
     if not options.skip_scan:
-        with open(settings['ignore.filenames'], 'r') as f:
+        with open(settings['movies.blacklist'], 'r') as f:
             blacklist = [i.strip() for i in f]
 
         tmdb = TMDB(api_key)
