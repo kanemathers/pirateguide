@@ -108,13 +108,11 @@ def add_movie_path(tmdb, path, movie_name):
         movie            = Movies(tmdb_id, path)
         movie.tmdb_cache = resp
 
-        try:
-            with transaction.manager:
-                movie.save()
-        except IntegrityError:
-            log.info('skipping movie: {0}'.format(path))
-
-            pass
+    try:
+        with transaction.manager:
+            movie.save()
+    except IntegrityError:
+        log.info('skipping movie: {0}'.format(path))
 
 class LibraryEventHandler(FileSystemEventHandler):
 
