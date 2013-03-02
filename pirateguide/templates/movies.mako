@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div id="sidebar" class="span3">
-            <div class="well sidebar">
+            <div class="well">
                 <input class="span12" placeholder="Search..." data-ng-model="search.$">
 
                 <ul class="nav nav-list">
@@ -21,18 +21,26 @@
             <p>{{movie.info.overview}}</p>
 
             <div class="row-fluid stats-row">
-                <div class="span4">
-                    {{movie.info.vote_average}}
+                <div class="span4 likes">
+                    <h3>Likes</h3>
+
+                    <div class="likebar">
+                        <div class="bar" style="width: {{movie.info.vote_average * 10}}%"></div>
+                    </div>
                 </div>
-                <div class="span4">
-                    <ul class="unstyled inline">
+                <div class="span4 tags">
+                    <h3>Tags</h3>
+
+                    <ul class="unstyled inline taglist">
                         <li data-ng-repeat="genre in movie.info.genres">
-                            <span class="label">{{genre.name}}</span>
+                            <span class="badge badge-important">{{genre.name}}</span>
                         </li>
                     </ul>
                 </div>
-                <div class="span4">
-                    {{movie.info.runtime / 60 | number: 1}} hrs
+                <div class="span4 runtime">
+                    <h3>Runtime</h3>
+
+                    <strong>{{movie.info.runtime / 60 | number: 1}} hrs</strong>
                 </div>
             </div>
         </div>

@@ -33,6 +33,12 @@ angular.module('pirateguide.controllers', [])
 
                 $scope.$emit('bg:change', url);
             });
+
+            TMDB.request('/movie/' + movie.tmdb_id + '/trailers').success(function(trailers)
+            {
+                var youtube          = 'https://www.youtube.com/embed/';
+                $scope.movie.trailer = youtube + trailers.youtube[0].source;
+            });
         };
 
         var screen      = angular.element(window);
@@ -53,6 +59,8 @@ angular.module('pirateguide.controllers', [])
 
             $scope.movies  = movies;
             $scope.unknown = unknown;
+
+            $scope.setMovie($scope.movies[0]);
         });
     }
 ]);
