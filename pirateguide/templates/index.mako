@@ -1,3 +1,6 @@
+<%
+    import json
+%>
 <!DOCTYPE html>
 <html lang="en" data-ng-app="pirateguide">
 <head>
@@ -23,8 +26,7 @@
 
     <script>
     angular.module('pirateguide.settings', [])
-
-    .value('api_key', '${api_key}');
+    .constant('Config', ${json.dumps(settings) | n});
     </script>
 
     % for url in request.webassets_env['js'].urls():

@@ -16,9 +16,9 @@ angular.module('pirateguide.services', [])
 
 .factory('TMDB', [
     '$http',
-    'api_key',
+    'Config',
 
-    function($http, api_key)
+    function($http, Config)
     {
         var settings = {
             api_base: 'http://api.themoviedb.org/3/',
@@ -37,7 +37,7 @@ angular.module('pirateguide.services', [])
             request: function(request, params)
             {
                 params          = params || {};
-                params.api_key  = api_key;
+                params.api_key  = Config.api_key;
                 params.callback = 'JSON_CALLBACK';
 
                 return $http.jsonp(settings.api_base + stripSlash(request),
