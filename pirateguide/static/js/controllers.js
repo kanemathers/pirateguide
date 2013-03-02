@@ -4,8 +4,9 @@ angular.module('pirateguide.controllers', [])
     '$scope',
     'Movies',
     'TMDB',
+    'Config',
 
-    function($scope, Movies, TMDB)
+    function($scope, Movies, TMDB, Config)
     {
         var findPoster = function(posters)
         {
@@ -41,6 +42,11 @@ angular.module('pirateguide.controllers', [])
             });
         };
 
+        $scope.startStream = function(movie)
+        {
+            Movies.startStream(movie.id);
+        };
+
         var screen      = angular.element(window);
         var screenRatio = screen.width() / screen.height();
 
@@ -62,5 +68,7 @@ angular.module('pirateguide.controllers', [])
 
             $scope.setMovie($scope.movies[0]);
         });
+
+        $scope.stream = Config.stream;
     }
 ]);

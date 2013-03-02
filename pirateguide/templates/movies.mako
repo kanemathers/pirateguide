@@ -45,4 +45,16 @@
             </div>
         </div>
     </div>
+
+    <div id="push"></div>
+</div>
+
+<div id="footer">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span9 offset3">
+                <button class="btn btn-primary btn-medium pull-right" data-ng-show="stream" data-ng-click="startStream(movie)">Stream</button>
+            </div>
+        </div>
+    </div>
 </div>

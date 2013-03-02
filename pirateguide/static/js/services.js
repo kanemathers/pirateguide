@@ -9,6 +9,13 @@ angular.module('pirateguide.services', [])
             all: function()
             {
                 return $http.get('/movies');
+            },
+
+            startStream: function(movie_id)
+            {
+                $http.post('/movies/stream', {
+                    'id': movie_id
+                });
             }
         };
     }

@@ -19,7 +19,7 @@
     <![endif]-->
 </head>
 <body data-bg-changer>
-    <div data-ng-view></div>
+    <div id="wrap" data-ng-view></div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
