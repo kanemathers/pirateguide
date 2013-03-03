@@ -8,6 +8,12 @@
                     <li data-ng-repeat="movie in movies | filter: search | orderBy: 'info.title'">
                         <a data-ng-click="setMovie(movie)">{{movie.info.title}}</a>
                     </li>
+
+                    <li class="divider"></li>
+
+                    <li data-ng-repeat="file in unknown | filter: search | orderBy: 'path'">
+                        <a title="{{file.path}}">{{baseName(file.path)}}</a>
+                    </li>
                 </ul>
             </div>
         </div>

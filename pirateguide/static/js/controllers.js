@@ -47,6 +47,11 @@ angular.module('pirateguide.controllers', [])
             Movies.startStream(movie.id);
         };
 
+        $scope.baseName = function(path)
+        {
+            return path.substring(path.lastIndexOf('/') + 1);
+        };
+
         var screen      = angular.element(window);
         var screenRatio = screen.width() / screen.height();
 
