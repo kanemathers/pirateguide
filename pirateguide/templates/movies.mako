@@ -5,8 +5,8 @@
                 <input class="span12" placeholder="Search..." data-ng-model="search.$">
 
                 <ul class="nav nav-list">
-                    <li data-ng-repeat="movie in movies | filter: search | orderBy: 'info.title'">
-                        <a data-ng-click="setMovie(movie)">{{movie.info.title}}</a>
+                    <li data-ng-class="{active: i.id == movie.id}" data-ng-repeat="i in movies | filter: search | orderBy: 'info.title'">
+                        <a data-ng-click="setMovie(i)">{{i.info.title}}</a>
                     </li>
 
                     <li class="divider"></li>
