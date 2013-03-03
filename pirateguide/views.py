@@ -19,14 +19,16 @@ from .models import (
 
 @view_config(route_name='home', renderer='index.mako')
 def home(request):
-    if 'movies.streamer' in request.registry.settings:
-        stream = True
+    if 'movies.btn.play' in request.registry.settings:
+        btn_play = True
     else:
-        stream = False
+        btn_play = False
 
     settings = {
         'api_key': request.registry.settings['movies.api_key'],
-        'stream':  stream,
+        'buttons': {
+            'play': btn_play
+        }
     }
 
     return {'settings': settings}
@@ -45,20 +47,19 @@ def partials(request):
 def movie_list(request):
     return Movies.all()
 
-@view_config(route_name='movie.stream', request_method='POST', renderer='json')
-def stream(request):
+@view_config(route_name='movie.play', request_method='POST', renderer='json')
+def play(request):
     try:
-        streamer = request.registry.settings['movies.streamer']
+        player = request.registry.settings['movies.btn.play']
     except KeyError:
         return HTTPNotImplemented()
 
-    print request.json_body
     movie = Movies.by_id(request.json_body.get('id'))
 
     if not movie:
         return HTTPBadRequest()
 
-    command = streamer.format(movie.path)
+    command = player.format(movie.path)
 
     subprocess.Popen(shlex.split(command))
 

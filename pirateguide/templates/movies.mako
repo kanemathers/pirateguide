@@ -60,7 +60,7 @@
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span9 offset3">
-                <button class="btn btn-primary btn-medium pull-right" data-ng-show="stream" data-ng-click="startStream(movie)">Stream</button>
+                <button class="btn btn-primary btn-medium pull-right" data-ng-show="buttons.play" data-ng-click="playMovie(movie)">Play Movie</button>
             </div>
         </div>
     </div>

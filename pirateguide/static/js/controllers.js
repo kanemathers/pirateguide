@@ -42,9 +42,9 @@ angular.module('pirateguide.controllers', [])
             });
         };
 
-        $scope.startStream = function(movie)
+        $scope.playMovie = function(movie)
         {
-            Movies.startStream(movie.id);
+            Movies.playMovie(movie.id);
         };
 
         $scope.baseName = function(path)
@@ -74,6 +74,6 @@ angular.module('pirateguide.controllers', [])
             $scope.setMovie($scope.movies[0]);
         });
 
-        $scope.stream = Config.stream;
+        $scope.buttons = Config.buttons;
     }
 ]);

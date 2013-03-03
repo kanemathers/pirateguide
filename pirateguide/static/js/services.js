@@ -11,9 +11,9 @@ angular.module('pirateguide.services', [])
                 return $http.get('/movies');
             },
 
-            startStream: function(movie_id)
+            playMovie: function(movie_id)
             {
-                $http.post('/movies/stream', {
+                $http.post('/movies/play', {
                     'id': movie_id
                 });
             }

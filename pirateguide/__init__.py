@@ -24,7 +24,7 @@ def main(global_config, **settings):
     config.add_route('partials', '/partials/{partial}.html')
 
     config.add_route('movie.list', '/movies')
-    config.add_route('movie.stream', '/movies/stream')
+    config.add_route('movie.play', '/movies/play')
 
     js_bundle = Bundle('js/*.js',
                        filters='rjsmin', output='js/app.min.js', debug=False)
