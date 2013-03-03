@@ -31,6 +31,7 @@
                     <h3>Likes</h3>
 
                     <div class="likebar">
+                    <!--<div class="progress progress-success progress-striped active">-->
                         <div class="bar" style="width: {{movie.info.vote_average * 10}}%"></div>
                     </div>
                 </div>
@@ -39,7 +40,7 @@
 
                     <ul class="unstyled inline taglist">
                         <li data-ng-repeat="genre in movie.info.genres">
-                            <span class="badge badge-important">{{genre.name}}</span>
+                            <span class="badge badge-info">{{genre.name}}</span>
                         </li>
                     </ul>
                 </div>
