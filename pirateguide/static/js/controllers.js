@@ -36,11 +36,13 @@ angular.module('pirateguide.controllers', [])
                 $scope.$emit('bg:change', url);
             });
 
+            /* don't need this yet.
             TMDB.request('/movie/' + movie.tmdb_id + '/trailers').success(function(trailers)
             {
                 var youtube          = 'https://www.youtube.com/embed/';
                 $scope.movie.trailer = youtube + trailers.youtube[0].source;
             });
+            */
         };
 
         $scope.playMovie = function(movie)
