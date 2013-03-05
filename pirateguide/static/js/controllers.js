@@ -2,11 +2,12 @@ angular.module('pirateguide.controllers', [])
 
 .controller('MoviesCtrl', [
     '$scope',
+    'Sidebar',
     'Movies',
     'TMDB',
     'Config',
 
-    function($scope, Movies, TMDB, Config)
+    function($scope, Sidebar, Movies, TMDB, Config)
     {
         var findPoster = function(posters)
         {
@@ -68,10 +69,26 @@ angular.module('pirateguide.controllers', [])
                     unknown.push(i);
             });
 
-            $scope.movies  = movies;
-            $scope.unknown = unknown;
+            Sidebar.push({
+                title:    'Movies',
+                items:     movies,
+                setItem:   $scope.setMovie,
+                itemTitle: function(item)
+                {
+                    return item.info.title;
+                },
+            });
 
-            $scope.setMovie($scope.movies[0]);
+            Sidebar.push({
+                title:     'Unknown',
+                items:     unknown,
+                itemTitle: function(item)
+                {
+                    return $scope.baseName(item.path);
+                }
+            });
+
+            $scope.setMovie(movies[0]);
         });
 
         $scope.buttons = Config.buttons;

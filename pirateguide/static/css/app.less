@@ -4,6 +4,9 @@
 @textColor:     @grayLight;
 @headingsColor: @grayLighter;
 
+@iconSpritePath:          "../libs/bootstrap/img/glyphicons-halflings.png";
+@iconWhiteSpritePath:     "../libs/bootstrap/img/glyphicons-halflings-white.png";
+
 @import "../libs/cosmo/bootswatch.less";
 @import "../libs/bootstrap/less/utilities.less";
 
@@ -64,23 +67,57 @@ body
         width: 21.97%;
         height: 95%;
         overflow-y: auto;
+    }
 
-        > input
+    input.search
+    {
+        margin-bottom: 15px;
+        padding: 3px;
+    }
+
+    .nav-tabs
+    {
+        a
         {
-            margin-bottom: 15px;
-            padding: 3px;
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            .ie7-restore-right-whitespace();
+            line-height: 14px;
+            vertical-align: text-top;
+            background-image: url("@{iconSpritePath}");
+            background-position: 14px 14px;
+            background-repeat: no-repeat;
+            margin-top: 1px;
+            padding: 0;
+            .hide-text();
         }
 
-        .nav-list
+        li
         {
-            padding-bottom: 19px;
+            padding: 14px;
         }
 
-        .nav-list > li > a
+        .tab-movies
         {
-            padding: 5px 15px;
-            text-shadow: none;
+            .icon-film();
         }
+
+        .tab-unknown
+        {
+            .icon-file();
+        }
+    }
+
+    .nav-list
+    {
+        padding-bottom: 19px;
+    }
+
+    .nav-list > li > a
+    {
+        padding: 5px 15px;
+        text-shadow: none;
     }
 }
 

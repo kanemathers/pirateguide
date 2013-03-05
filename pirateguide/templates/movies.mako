@@ -1,20 +1,7 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div id="sidebar" class="span3">
-            <div class="well">
-                <input class="span12" placeholder="Search..." data-ng-model="search.$">
-
-                <ul class="nav nav-list">
-                    <li data-ng-class="{active: i.id == movie.id}" data-ng-repeat="i in movies | filter: search | orderBy: 'info.title'">
-                        <a data-ng-click="setMovie(i)">{{i.info.title}}</a>
-                    </li>
-
-                    <li class="divider"></li>
-
-                    <li data-ng-repeat="file in unknown | filter: search | orderBy: 'path'">
-                        <a title="{{file.path}}">{{baseName(file.path)}}</a>
-                    </li>
-                </ul>
+            <div class="well" data-sidebar>
             </div>
         </div>
         <div id="content" class="span9" data-ng-show="movie">

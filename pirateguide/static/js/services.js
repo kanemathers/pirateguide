@@ -1,5 +1,12 @@
 angular.module('pirateguide.services', [])
 
+.factory('Sidebar', [
+    function()
+    {
+        return [];
+    }
+])
+
 .factory('Movies', [
     '$http',
 

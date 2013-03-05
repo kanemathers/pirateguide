@@ -24,6 +24,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
 
+    <script src="${request.static_url('pirateguide:static/libs/bootstrap/js/bootstrap-tab.js')}"></script>
+
     <script>
     angular.module('pirateguide.settings', [])
     .constant('Config', ${json.dumps(settings) | n});
